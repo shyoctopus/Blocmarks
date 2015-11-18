@@ -10,6 +10,12 @@ class IncomingController < ApplicationController
    # You put the message-splitting and business
    # magic here.
 
+   @user = User.find_by(email: params[:sender])
+   if @user
+     @topic = @user.topics.find_or_create_by(title: params[:subject])
+     @bookmark = @topic.bookmarks.create(url: params['stripped-text'])
+   end
+
    # Assuming all went well.
    head 200
  end
