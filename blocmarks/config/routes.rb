@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'incoming/post:incoming,'
+
+  get 'incoming/to:'
+
+  get 'incoming/incoming#create'
+
   resources :topics
   get 'welcome/about'
 
