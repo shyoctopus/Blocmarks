@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
 
-  resources :topics
+  resources :topics do
+    resources :bookmarks
+  end
   get 'welcome/about'
 
   devise_for :users
 
-  resources :bookmarks
+
 
   post :incoming, to: 'incoming#create'
 

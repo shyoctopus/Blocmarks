@@ -5,7 +5,6 @@
 <table>
   <thead>
     <tr>
-      <th>Title</th>
       <th>Url</th>
       <th colspan="3"></th>
     </tr>
@@ -14,11 +13,10 @@
   <tbody>
     <% @bookmarks.each do |bookmark| %>
       <tr>
-        <td><%= bookmark.title %></td>
         <td><%= bookmark.url %></td>
-        <td><%= link_to 'Show', bookmark %></td>
-        <td><%= link_to 'Edit', edit_bookmark_path(bookmark) %></td>
-        <td><%= link_to 'Destroy', bookmark, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', [@topic, bookmark] %></td>
+        <td><%= link_to 'Edit', edit_topic_bookmark_path(@topic, bookmark) %></td>
+        <td><%= link_to 'Destroy', [@topic, bookmark], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Bookmark', new_bookmark_path %>
+<%= link_to 'New Bookmark', new_topic_bookmark_path(@topic) %>
